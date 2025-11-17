@@ -13,3 +13,6 @@ __pycache__/
 
 # for Node npm
 node_modules/
+
+# VS Code workspace files
+*.code-workspace
