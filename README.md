@@ -12,3 +12,16 @@ Throughout the semester, I explored several core topics in modern computer graph
 - HTML, CSS, JavaScript integration for graphics applications  
 
 This repository serves as a collection of my learning progress, experiments, and implemented solutions. Feel free to browse the folders and review individual projects.
+
+---
+
+### 📂 Outputs & Demonstrations
+
+All final outputs and demonstration files can be found in the **outputs/** directory.  
+Below is an example animation from the 3D RGB cube implementation:
+
+<p align="center">
+  <img src="outputs/3d-spinning-cube.gif" alt="3D RGB Cube Demo" width="450">
+</p>
+
+Feel free to explore each project folder to see the full implementation details, source code, and rendered results.
