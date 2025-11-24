@@ -54,10 +54,15 @@ window.onload = function init() {
     canvas.addEventListener("click", function(event){
 
         gl.bindBuffer( gl.ARRAY_BUFFER, vBuffer);
+        // Converting mouse coordinates to WebGL coordinates
+        // wherever the mouse clicks, we create a vec2(x,y).
         var t = vec2(2*event.clientX/canvas.width-1, 
              2*(canvas.height-event.clientY)/canvas.height-1);
         gl.bufferSubData(gl.ARRAY_BUFFER, 8*index, flatten(t));
-
+        // bufferSubData → ‘write data to a specific part of the buffer’
+        // each vertex = 2 floats
+        // •    1 float = 4 bytes
+        // •    2 floats = 8 bytes
         gl.bindBuffer( gl.ARRAY_BUFFER, cBuffer);
         t = vec4(colors[index%7]);
         gl.bufferSubData(gl.ARRAY_BUFFER, 16*index, flatten(t));

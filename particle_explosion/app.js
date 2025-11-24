@@ -92,7 +92,9 @@ function spawnExplosion(x, y) {
             g: Math.random(),
             b: Math.random(),
             a: 1.0,
+            // opacity for fade-out effect
             life: Math.random() * 80 + 40
+            // each particle has a lifespan of between 40 and 120 frames.
         });
     }
 
@@ -100,7 +102,7 @@ function spawnExplosion(x, y) {
     if (particles.length > MAX_PARTICLES)
         particles.splice(0, particles.length - MAX_PARTICLES);
 }
-
+// In every frame, update particle positions and properties
 function updateParticles() {
     for (var p of particles) {
         p.x += p.vx;
