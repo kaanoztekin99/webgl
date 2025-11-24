@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WebGL Particle Explosion</title>
+
+<script src="./Common/webgl-utils.js"></script>
+<script src="./Common/initShaders2.js"></script>
+<script src="./Common/MV.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+        font-family: sans-serif;
+    }
+    canvas {
+        border: 1px solid #333;
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="gl-canvas" width="600" height="600"></canvas>
+
+<!-- ================== VERTEX SHADER ================== -->
+<script id="vshader" type="x-shader/x-vertex">
+attribute vec2 vPosition;
+attribute vec4 vColor;
+
+uniform float uPointSize;
+
+varying vec4 fColor;
+
+void main() {
+    gl_PointSize = uPointSize;
+    gl_Position = vec4(vPosition, 0.0, 1.0);
+    fColor = vColor;
+}
+</script>
+
+<!-- ================== FRAGMENT SHADER ================== -->
+<script id="fshader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 fColor;
+
+void main() {
+    // circular particles
+    float dist = distance(gl_PointCoord, vec2(0.5, 0.5));
+    if (dist > 0.5) discard;
+
+    gl_FragColor = fColor;
+}
+</script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
