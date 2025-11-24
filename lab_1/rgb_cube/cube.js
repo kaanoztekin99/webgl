@@ -5,6 +5,8 @@ var points = [];
 var colors = [];
 
 var theta = 0.0;
+var rotationSpeed = 0.02;
+var isRotating = true;
 var uMVPLoc;
 
 window.onload = function init()
@@ -45,6 +47,18 @@ window.onload = function init()
 
     // --- MVP uniform ---
     uMVPLoc = gl.getUniformLocation(program, "uMVP");
+    // --- Mouse interaction ---
+    canvas.addEventListener("click", function() {
+        rotationSpeed += 0.01;
+        console.log("New speed:", rotationSpeed.toFixed(3));
+    });
+
+    window.addEventListener("keydown", function(e) {
+        if (e.code === "Space") {
+            isRotating = !isRotating;
+            console.log("Rotating:", isRotating);
+        }
+    });
 
     render();
 };
@@ -120,7 +134,10 @@ function createMVP(theta)
 //   Render Loop
 function render()
 {
-    theta += 0.02;
+    if (isRotating) {
+        theta += rotationSpeed;
+    }
+    
     var mvp = createMVP(theta);
     gl.uniformMatrix4fv(uMVPLoc, false, mvp);
 
