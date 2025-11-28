@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3D RGB Cube</title>
+
+<script src="../Common/webgl-utils.js"></script>
+<script src="../Common/initShaders2.js"></script>
+<script src="../Common/MV.js"></script>
+<script src="cube.js"></script>
+
+<style>
+body {
+    margin: 0; 
+    background:#ffffff;
+    display:flex; 
+    flex-direction: column;
+    justify-content:center; 
+    align-items:center; 
+    height:100vh; 
+    font-family: sans-serif;
+}
+#gl-canvas { border:1px solid #a84a4a; }
+#instructions {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    line-height: 1.4;
+}
+</style>
+</head>
+
+<body>
+
+    <canvas id="gl-canvas" width="800" height="800"></canvas>
+    <label>N Cubes: </label>
+    <input type="range" id="numSlider" min="1" max="16" value="3">    <button id="resetBtn">Reset</button>
+
+</body>
+</html>
