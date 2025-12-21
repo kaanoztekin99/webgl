@@ -24,4 +24,9 @@ Below is an example animation from the 3D RGB cube implementation:
   <img src="outputs/3d-spinning-cube.gif" alt="3D RGB Cube Demo" width="450">
 </p>
 
+
+Another example form lab 2: interactivity of multiple cubes
+<p align="center">
+  <img src="outputs/multiple-cubes-and-interaction.gif" alt="Interactivity Demo" width="450">
+</p>
 Feel free to explore each project folder to see the full implementation details, source code, and rendered results.
