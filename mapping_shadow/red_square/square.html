@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Projective Shadow Example</title>
+
+<!-- Ders paketindeki WEBGL yardımcı dosyaları -->
+<script src="Common/webgl-utils.js"></script>
+<script src="Common/initShaders2.js"></script>
+<script src="Common/MV.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    canvas {
+        border: 1px solid #ccc;
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="gl-canvas" width="600" height="600"></canvas>
+
+<!-- ======== VERTEX SHADER ======== -->
+<script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 vPosition;
+
+    uniform mat4 modelViewMatrix;
+    uniform mat4 projectionMatrix;
+
+    void main() {
+        gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+    }
+</script>
+
+<!-- ======== FRAGMENT SHADER ======== -->
+<script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+
+    uniform vec4 fColor;
+
+    void main() {
+        gl_FragColor = fColor;
+    }
+</script>
+
+<script src="square.js"></script>
+</body>
+</html>
