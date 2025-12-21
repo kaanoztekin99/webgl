@@ -162,7 +162,7 @@ function render()
         // Model Matrix = T * R
         var T = instanceTransforms[i];
         var R = rotateY(rotationAngle[i]);
-        var M = mult(T, R);
+        var M = mult(R,T);
         gl.uniformMatrix4fv(uModelLoc, false, flatten(M));
         gl.drawArrays(gl.TRIANGLES, 0, points.length);
     }

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>3D RGB Cube</title>
+<title>multiple 3d cubes and interactivity</title>
 
 <script src="../Common/webgl-utils.js"></script>
 <script src="../Common/initShaders2.js"></script>
@@ -35,7 +35,8 @@ body {
 
     <canvas id="gl-canvas" width="800" height="800"></canvas>
     <label>N Cubes: </label>
-    <input type="range" id="numSlider" min="1" max="16" value="3">    <button id="resetBtn">Reset</button>
-
+    <input type="range" id="numSlider" min="1" max="16" value="1">
+    <span id="numLabel">Instances: 1</span>
+	<button id="resetBtn">Reset Camera</button>
 </body>
 </html>
