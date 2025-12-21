@@ -91,7 +91,7 @@ window.onload = function init() {
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
-    var program = initShaders(gl, "shaders/vshader21.glsl", "shaders/fshader21.glsl");
+    var program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
 
     const ext = gl.getExtension("ANGLE_instanced_arrays");

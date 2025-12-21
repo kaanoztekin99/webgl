@@ -5,19 +5,59 @@
 <title>multiple 3d cubes and interactivity</title>
 
 <script src="../Common/webgl-utils.js"></script>
-<script src="../Common/initShaders2.js"></script>
+<script src="../Common/initShaders.js"></script>
 <script src="../Common/MV.js"></script>
+
+<!-- Vertex Shader -->
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec3 vPosition;
+attribute vec3 vColor;
+
+attribute vec4 a_matrix0;
+attribute vec4 a_matrix1;
+attribute vec4 a_matrix2;
+attribute vec4 a_matrix3;
+
+uniform mat4 uView;
+uniform mat4 uProj;
+
+varying vec3 fColor;
+
+void main()
+{
+    mat4 uModel = mat4(
+        a_matrix0,
+        a_matrix1,
+        a_matrix2,
+        a_matrix3
+    );
+
+    fColor = vColor;
+    gl_Position = uProj * uView * uModel * vec4(vPosition, 1.0);
+}
+</script>
+
+<!-- Fragment Shader -->
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec3 fColor;
+
+void main() {
+    gl_FragColor = vec4(fColor, 1.0);
+}
+</script>
+
 <script src="cube.js"></script>
 
 <style>
 body {
-    margin: 0; 
+    margin: 0;
     background:#ffffff;
-    display:flex; 
+    display:flex;
     flex-direction: column;
-    justify-content:center; 
-    align-items:center; 
-    height:100vh; 
+    justify-content:center;
+    align-items:center;
+    height:100vh;
     font-family: sans-serif;
 }
 #gl-canvas { border:1px solid #a84a4a; }
@@ -32,11 +72,11 @@ body {
 </head>
 
 <body>
-
     <canvas id="gl-canvas" width="800" height="800"></canvas>
+
     <label>N Cubes: </label>
     <input type="range" id="numSlider" min="1" max="16" value="1">
     <span id="numLabel">Instances: 1</span>
-	<button id="resetBtn">Reset Camera</button>
+    <button id="resetBtn">Reset Camera</button>
 </body>
 </html>
